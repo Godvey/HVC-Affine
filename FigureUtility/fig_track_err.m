@@ -1,5 +1,5 @@
-function fig_norm_err(out, tout, tg, run_mode)
-tab = uitab(tg,'title', "Norm Error");
+function fig_track_err(out, tout, tg, run_mode)
+tab = uitab(tg,'title', "Tracking errors");
 axes('Parent',tab);
 if run_mode == 2
     ex_all = {out.deltax0, out.deltax, out.deltax1};
@@ -9,7 +9,9 @@ else
     ey_all = {out.deltay};
 end
 nums = length(ex_all);
+
 title_all = {"Ideal Simulation", "Simulation with Actuator and Noise", "Experiment"};
+
 for delay_i = 1:length(ex_all)
     ex = ex_all{delay_i};
     ey = ey_all{delay_i};
@@ -26,7 +28,7 @@ for delay_i = 1:length(ex_all)
     end
     xlabel("Time (second)");
     ylabel("Tracking errors in X-channel");
-    set(gca, 'FontName','Times New Roman', 'FontSize',8);
+    set(gca, 'FontName','Times New Roman', 'FontSize',12);
     if run_mode == 2
         title(title_all{delay_i}, 'FontName','Times New Roman', 'FontSize', 16);
     end

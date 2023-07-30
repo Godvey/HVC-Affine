@@ -28,7 +28,11 @@ else
     py_a = {out.py(1:delta:end,:)};
     ey_all = {out.deltay(1:delta:end,:)};
 end
-title_all = {"Ideal Simulation", "Simulation with actuator first-order model", "Experiment"};
+if run_mode == 2
+    title_all = {"Ideal Simulation", "Simulation with Actuator and Noise", "Experiment"};
+else
+    title_all = {"Simulation With Controller (19)"};
+end
 nums = length(px_a);
 
 for delay_i = 1:nums
@@ -135,8 +139,6 @@ for delay_i = 1:nums
         legend(lgd, label, 'FontName','Times New Roman', 'FontSize', 18, 'Position', [0.17, 0.025, 0.7 ,0.01], ...
             'Orientation','horizon');
     end
-    if run_mode == 2
-        title(title_all{delay_i}, 'FontName','Times New Roman', 'FontSize', 16);
-    end
+    title(title_all{delay_i}, 'FontName','Times New Roman', 'FontSize', 16);
     set(gca, 'FontName','Times New Roman', 'FontSize',18);
 end
