@@ -2,7 +2,7 @@
 
 ## Information 
 
-### Author: Wei Yu
+### Author: Wei Yu & Peng Yi
 ### Update Date: 2023.07.30
 ### Email: yuwei26@mail2.sysu.edu.cn
 ### Requirements
