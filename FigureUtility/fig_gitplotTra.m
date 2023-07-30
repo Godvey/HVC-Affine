@@ -24,11 +24,15 @@ if run_mode == 2
     py_a = {out.py0(1:delta:end,:), out.py(1:delta:end,:), out.py1(1:delta:end,:)};
     ey_all = {out.deltay0(1:delta:end,:), out.deltay(1:delta:end,:), out.deltay1(1:delta:end,:)};
 else
-    px_a = {out.px(1:delta:end,:)};
-    py_a = {out.py(1:delta:end,:)};
-    ey_all = {out.deltay(1:delta:end,:)};
+    px_a = {out.px(1:delta:end,:), out.px_nohvc(1:delta:end,:)};
+    py_a = {out.py(1:delta:end,:), out.py_nohvc(1:delta:end,:)};
+    ey_all = {out.deltay(1:delta:end,:), out.deltay_nohvc(1:delta:end,:)};
 end
-title_all = {"Ideal Simulation", "Simulation with actuator first-order model", "Experiment"};
+if run_mode == 2
+    title_all = {"Ideal Simulation", "Simulation with Actuator and Noise", "Experiment"};
+else
+    title_all = {"Simulation With HVC", "Simulation Without HVC"};
+end
 nums = length(px_a);
 
 for delay_i = 1:nums
@@ -135,8 +139,6 @@ for delay_i = 1:nums
         legend(lgd, label, 'FontName','Times New Roman', 'FontSize', 18, 'Position', [0.17, 0.025, 0.7 ,0.01], ...
             'Orientation','horizon');
     end
-    if run_mode == 2
-        title(title_all{delay_i}, 'FontName','Times New Roman', 'FontSize', 16);
-    end
+    title(title_all{delay_i}, 'FontName','Times New Roman', 'FontSize', 16);
     set(gca, 'FontName','Times New Roman', 'FontSize',18);
 end

@@ -41,7 +41,7 @@ It is strongly recommended to use `run_by_script.m` for simulation. Detailed Par
 | -------------------- | --------------------------------------------------------- | ------------ | ------------------------------- | ------------------------------------------------------------ |
 | `run_mode`           | 1 for theoretical simulation, 2 for experiment simulation | int          | `1`                             |                                                              |
 | `fig_from_data`      | If figure from `.mat` file,                               | bool         | `true`                          | **Only support experiment simulation mode**                  |
-| `data_dir`           | Figure data dir, work with `fig_from_data`                | str          | `"/SimulationResults/data.mat"` |                                                              |
+| `data_dir`           | Figure data dir, work with `fig_from_data`                | str          | `"./SimulationResults/data.mat"` |                                                              |
 | `delay`              | Historical information delay, $\tau$                      | double       | `0.01`                          |                                                              |
 | `cmd_sample`         | Control period                                            | double       | `0.1`                           | **Only support experiment simulation mode**                  |
 | `kalpha`             | Controller parameter $k_\alpha$                           | double       | `0.5`                           |                                                              |
@@ -52,10 +52,6 @@ It is strongly recommended to use `run_by_script.m` for simulation. Detailed Par
 | `noise_v, noise_p`   | Noise magnitude for velocity and position feedback        | list[double] | `normrnd(0.001, 0.03,[1 6]);`   | Different followers have different noise                     |
 | `noise_vT, noise_pT` | Noise sample time for velocity and position feedback      | double       | `0.1, 3`                        |                                                              |
 | `seed_v, seed_p`     | Noise seed time for velocity and position feedback        | list[double] | `floor(rand()*10000000)`        | Different followers have different noise                     |
-| `filename`           | Filename for experiment data                              | str          | `"data/Case2-smallTau-P.txt"`   | **Only support experiment simulation mode**                  |
-| `time_cut`           | Cut experiment data of beginning time                     | double       | `7`                             | **Recommended use `7`, only support experiment simulation mode** |
-| `start_time`         | Choose start experiment time                              | double       | `73`                            |                                                              |
-
 
 
 ### `Initial_Parameters.m`
@@ -68,4 +64,3 @@ It is strongly recommended to use `run_by_script.m` for simulation. Detailed Par
 | `P`               | the configuration of desired formation       | List[double] | `2*[2 0;1 1; 1 -1;0 1.2;0 -1.2;-1 1;-1 -1;-2 0.5;-2 -0.5]` |                         |
 | `P0`              | the initial positions of  agents             | List[double] | `[2 0;1 1; 1 -1;1 2.2;-1 -2.2;1 3;-3 -3;1 3.5;-5 -3.5]`    |                         |
 | `neighborMat`     | Undirected adjacent matrix for the formation | List[double] |                                                            |                         |
-

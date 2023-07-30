@@ -5,10 +5,14 @@ if run_mode == 2
     ex_all = {out.deltax0, out.deltax, out.deltax1};
     ey_all = {out.deltay0, out.deltay, out.deltay1};
 else
-    ex_all = {out.deltax};
-    ey_all = {out.deltay};
+    ex_all = {out.deltax, out.deltax_nohvc};
+    ey_all = {out.deltay, out.deltay_nohvc};
 end
-lgd = {"Ideal Simulation", "Simulation with actuator first-order model", "Experiment"};
+if run_mode == 2
+    lgd = {"Ideal Simulation", "Simulation with Actuator and Noise", "Experiment"};
+else
+    lgd = {"Simulation With HVC", "Simulation Without HVC"};
+end
 nums = length(ex_all);
 for delay_i = 1:nums
     ex = ex_all{delay_i};
@@ -27,7 +31,7 @@ for delay_i = 1:nums
     hold on;
     plot(tout, vecnorm(ey, 2, 2), 'LineWidth', 3);
     grid on;
-    if delay_i == 3 && run_mode == 2
+    if delay_i == nums
         hLegend = legend(lgd, 'FontName','Times New Roman', 'FontSize', 16, 'NumColumns', size(ex, 2));
         set(hLegend, 'position', [0.1300    0.025    0.7750    0.01]);
     end

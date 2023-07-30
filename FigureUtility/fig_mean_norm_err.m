@@ -1,21 +1,25 @@
 function fig_mean_norm_err(out, tout, tg, channel, run_mode)
 channels = {"X", "Y"};
-tab = uitab(tg,'title', "Actual Model and Ideal Model");
+tab = uitab(tg,'title', "Mean Tracking Error in X");
 axes('Parent',tab);
 hold on;
 if run_mode == 2
     ex_all = {out.deltax0, out.deltax, out.deltax1};
     ey_all = {out.deltay0, out.deltay, out.deltay1};
 else
-    ex_all = {out.deltax};
-    ey_all = {out.deltay};
+    ex_all = {out.deltax, out.deltax_nohvc};
+    ey_all = {out.deltay, out.deltay_nohvc};
 end
 if channel == 1
     e_all = ex_all;
 else
     e_all = ey_all;
 end
-lgd = {"Ideal Simulation", "Simulation with Actuator and Noise", "Experiment", "Convergence Area"};
+if run_mode == 2
+    lgd = {"Ideal Simulation", "Simulation with Actuator and Noise", "Experiment"};
+else
+    lgd = {"Simulation With HVC", "Simulation Without HVC"};
+end
 hold on;
 for i = 1:length(ex_all)
     e = e_all{i};
@@ -24,9 +28,7 @@ for i = 1:length(ex_all)
 end
 xlabel("Time (second)");
 ylabel(sprintf("Mean Tracking error in %s-channel", channels{channel}));
-if run_mode == 2
-    legend(lgd, 'FontName','Times New Roman', 'FontSize', 20);
-end
+legend(lgd, 'FontName','Times New Roman', 'FontSize', 20);
 set(gca, 'FontName','Times New Roman', 'FontSize',22);
 grid on;
 end
