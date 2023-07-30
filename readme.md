@@ -14,7 +14,8 @@ This is the code for nine unicycles to realize affine formation simulation，and
 
 ## Code Structure
 
-<img width="317" alt="code_structure" src="https://github.com/Lovely-XPP/HAC-Affine/assets/66028151/93326ddd-ac32-4532-9cab-aea330c388e4">
+<img width="314" alt="image" src="https://github.com/Lovely-XPP/HVC-Affine/assets/66028151/e1c9b288-3c34-4c40-bb57-ec4fd199debb">
+
 
 - `affine_single_intergrator.slx` - Main programme of theoretical simulation by Simulink.
 
