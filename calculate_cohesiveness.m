@@ -11,8 +11,8 @@ fprintf("-----------------------------------------------------------------------
 for i = 1:nums
     if i == nums
         outi = out(1);
-        deltax = outi.deltax_nohvc;
-        deltay = outi.deltay_nohvc;
+        deltax = outi.deltax1;
+        deltay = outi.deltay1;
     else
         outi = out(i);
         deltax = outi.deltax;
@@ -36,7 +36,7 @@ for i = 1:nums
     couhesiveY = tempy/count;
     
     if i == nums
-        fprintf("     %.2f\t%.2f\tNOHVC\t      %.3f   \t\t      %.3f \t\n", delay, kalpha, couhesiveX, couhesiveY); 
+        fprintf("     %.2f\t%.2f\t----\t      %.3f   \t\t      %.3f \t\n", delay, kalpha, couhesiveX, couhesiveY); 
     else
         fprintf("     %.2f\t%.2f\t%.2f\t      %.3f   \t\t      %.3f \t\n", delay, kalpha, kbeta, couhesiveX, couhesiveY);
     end

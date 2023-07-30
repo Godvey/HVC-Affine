@@ -18,17 +18,13 @@ This is the code for nine unicycles to realize affine formation simulation，and
 
 
 - `affine_single_intergrator.slx` - Main programme of theoretical simulation by Simulink.
-
 - `affine_single_intergrator_ex.slx` - Main programme of  experiment simulation by Simulink.
-
 - `run_by_script.m` - A Matlab script to easyly run simulation and demonstrate results including essential figures and cohesiveness.
-
-- `fcn_StressMatrix.m` - A script to calculate Stress Matrix by Shiyu, Zhao.
-
 - `Initial_Parameters.m` - A script to initialize parameters for simulation.
-
+- `fcn_StressMatrix.m` - A script to calculate Stress Matrix by Shiyu, Zhao.
+- `calculate_cohesiveness.m` - A script to calculate cohesiveness of simulation results.
+- `data` - Data of experiments.
 - `FigureUtility` - Functions of visualizing simulation results including trajectory, norm error, etc.
-
 - `SimulationResults` - Save folder for simulation results for experiment simulation mode.
 
 
@@ -49,7 +45,7 @@ It is strongly recommended to use `run_by_script.m` for simulation. Detailed Par
 | `kbeta`              | Controller parameter $k_\beta$                            | double       | `0.5`                           |                                                              |
 | `Tv, Kv`             | Actuator first-order model parameters                     | double       | `0.16, 0.987/0.16`              | $\dfrac{Kv}{s + Tv}$                                         |
 | `kptheta`            | Angle controller for experiment car                       | double       | `100`                           | $\omega^d = k_\theta(\theta^d - \theta)$                     |
-| `R. L`               | Parameters of car kinematics                              | double       | `3.2e-3, 10.5e-3`               |                                                              |
+| `R, L`              | Parameters of car kinematics                              | double       | `3.2e-3, 10.5e-3`               |                                                              |
 | `noise_v, noise_p`   | Noise magnitude for velocity and position feedback        | list[double] | `normrnd(0.001, 0.03,[1 6]);`   | Different followers have different noise                     |
 | `noise_vT, noise_pT` | Noise sample time for velocity and position feedback      | double       | `0.1, 3`                        |                                                              |
 | `seed_v, seed_p`     | Noise seed time for velocity and position feedback        | list[double] | `floor(rand()*10000000)`        | Different followers have different noise                     |

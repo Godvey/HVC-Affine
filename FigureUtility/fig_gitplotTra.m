@@ -24,14 +24,14 @@ if run_mode == 2
     py_a = {out.py0(1:delta:end,:), out.py(1:delta:end,:), out.py1(1:delta:end,:)};
     ey_all = {out.deltay0(1:delta:end,:), out.deltay(1:delta:end,:), out.deltay1(1:delta:end,:)};
 else
-    px_a = {out.px(1:delta:end,:), out.px_nohvc(1:delta:end,:)};
-    py_a = {out.py(1:delta:end,:), out.py_nohvc(1:delta:end,:)};
-    ey_all = {out.deltay(1:delta:end,:), out.deltay_nohvc(1:delta:end,:)};
+    px_a = {out.px(1:delta:end,:)};
+    py_a = {out.py(1:delta:end,:)};
+    ey_all = {out.deltay(1:delta:end,:)};
 end
 if run_mode == 2
     title_all = {"Ideal Simulation", "Simulation with Actuator and Noise", "Experiment"};
 else
-    title_all = {"Simulation With HVC", "Simulation Without HVC"};
+    title_all = {"Simulation With Controller (19)"};
 end
 nums = length(px_a);
 

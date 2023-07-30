@@ -5,16 +5,12 @@ if run_mode == 2
     ex_all = {out.deltax0, out.deltax, out.deltax1};
     ey_all = {out.deltay0, out.deltay, out.deltay1};
 else
-    ex_all = {out.deltax, out.deltax_nohvc};
-    ey_all = {out.deltay, out.deltay_nohvc};
+    ex_all = {out.deltax};
+    ey_all = {out.deltay};
 end
 nums = length(ex_all);
 
-if run_mode == 2
-    title_all = {"Ideal Simulation", "Simulation with Actuator and Noise", "Experiment"};
-else
-    title_all = {"Simulation With HVC", "Simulation Without HVC"};
-end
+title_all = {"Ideal Simulation", "Simulation with Actuator and Noise", "Experiment"};
 
 for delay_i = 1:length(ex_all)
     ex = ex_all{delay_i};
@@ -33,7 +29,9 @@ for delay_i = 1:length(ex_all)
     xlabel("Time (second)");
     ylabel("Tracking errors in X-channel");
     set(gca, 'FontName','Times New Roman', 'FontSize',12);
-    title(title_all{delay_i}, 'FontName','Times New Roman', 'FontSize', 16);
+    if run_mode == 2
+        title(title_all{delay_i}, 'FontName','Times New Roman', 'FontSize', 16);
+    end
 
     % y channel
     subplot(nums, 2, 2*delay_i)
@@ -47,6 +45,8 @@ for delay_i = 1:length(ex_all)
     xlabel("Time (second)");
     ylabel("Tracking errors in Y-channel");
     set(gca, 'FontName','Times New Roman', 'FontSize',12);
-    title(title_all{delay_i}, 'FontName','Times New Roman', 'FontSize', 16);
+    if run_mode == 2
+        title(title_all{delay_i}, 'FontName','Times New Roman', 'FontSize', 16);
+    end
 end
 end
