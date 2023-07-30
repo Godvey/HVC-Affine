@@ -16,27 +16,7 @@ tout = tout - tout(1);
 clear tmp;
 %plot(tout, v(:,12))
 %
-for i = 1:size(p,2)
-    % pi = p(:,i);
-    % vi = v(:,i);
-    % dp = calc_dp(pi);
-    % if mod(i,2) == 0
-    %     out_pts = find(abs(dp) > 0.015);
-    % else
-    %     out_pts = find(abs(dp) > 0.08);
-    % end
-    % for out_pt = out_pts'
-    %     pi(out_pt+1:end) = pi(out_pt+1:end) + dp(out_pt);
-    %     vi(out_pt+1) = 0;
-    % end
-    % p(:,i) = pi;
-    % v(:,i) = vi;
-    % % if i == 2
-    % %     plot(tout, dp);
-    % %     hold on;
-    % %     plot(tout, calc_dp(pi));
-    % % end
-end
+
 p = p(tout >= start_time, :);
 v = v(tout >= start_time, :);
 tout = tout(tout >= start_time) - start_time;
